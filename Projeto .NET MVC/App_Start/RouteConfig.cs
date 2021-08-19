@@ -13,6 +13,16 @@ namespace Projeto.NET_MVC
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+            /*
+            routes.MapRoute(
+                "MoviesByReleaseDate",
+                "movies/released/{year}/{month}",
+                new { controller = "movies", action = "ByReleaseDate" },
+                //new { year = @"\d{4}", month = @"\d{2}" }                 // limitar o numero de digitos por parametro
+                new { year = @"2015|2016", month = @"\d{2}" }               // limitar o valor do parametro
+            );
+             */
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

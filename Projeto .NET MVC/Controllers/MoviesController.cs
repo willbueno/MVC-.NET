@@ -1,4 +1,5 @@
 ﻿using Projeto.NET_MVC.Models;
+using Projeto.NET_MVC.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,19 @@ namespace Projeto.NET_MVC.Controllers
         public ActionResult Random()
         {
             var movie = new Movie() { Name = "Sherek" };
-            return View(movie);
+            var customers = new List<Customer>
+            {
+                new Customer { Name = "Costumer 1" },
+                new Customer { Name = "Costumer 2" }
+            };
+
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Customers = customers
+            };
+
+            return View(viewModel);
             //return Content("Hello world!");
             //return Json(movie, JsonRequestBehavior.AllowGet);
             //return HttpNotFound();

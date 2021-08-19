@@ -10,5 +10,11 @@ namespace Projeto.NET_MVC.ViewModels
     {
         public Movie Movie { get; set; }
         public List<Customer> Customers { get; set; }
+
+        public RandomMovieViewModel()
+        {
+            Movie = new Movie { Id = 1, Name = "Sherek" };
+            Customers = new CustomerViewModel().Customers;
+        }
     }
 }

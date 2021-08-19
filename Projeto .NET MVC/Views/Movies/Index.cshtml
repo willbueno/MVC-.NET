@@ -1,0 +1,20 @@
+﻿@model Projeto.NET_MVC.ViewModels.MovieViewModel
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+@if (Model.RandomMovies.Count == 0)
+{
+    <text>We don't have any movies yet.</text>
+}
+else
+{
+    <ul>
+        @foreach (var movie in Model.RandomMovies)
+        {
+            <li>@Html.ActionLink(movie.Movie.Name, "Details/" + movie.Movie.Id, "Movies")</li>
+        }
+    </ul>
+}

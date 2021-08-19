@@ -11,20 +11,26 @@ namespace Projeto.NET_MVC.Controllers
     public class MoviesController : Controller
     {
         // GET: Movies/Random
+        public ActionResult Index()
+        {
+            var viewModel = new MovieViewModel();
+
+            return View(viewModel);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var movies = new MovieViewModel().RandomMovies;
+            var movie = movies.Where(l => l.Movie.Id == id).FirstOrDefault();
+
+            if (movie == null)
+                return HttpNotFound();
+            return View(movie);
+        }
+
         public ActionResult Random()
         {
-            var movie = new Movie() { Name = "Sherek" };
-            var customers = new List<Customer>
-            {
-                new Customer { Name = "Costumer 1" },
-                new Customer { Name = "Costumer 2" }
-            };
-
-            var viewModel = new RandomMovieViewModel
-            {
-                Movie = movie,
-                Customers = customers
-            };
+            var viewModel = new RandomMovieViewModel();
 
             return View(viewModel);
             //return Content("Hello world!");
@@ -39,7 +45,8 @@ namespace Projeto.NET_MVC.Controllers
             return Content("id=" + id);
         }
 
-        public ActionResult Index(int? pageIndex, string sortBy)
+        [Route("movies/param")]
+        public ActionResult Param(int? pageIndex, string sortBy)
         {
             if (!pageIndex.HasValue)
                 pageIndex = 1;

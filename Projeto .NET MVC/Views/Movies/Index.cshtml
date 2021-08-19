@@ -1,20 +1,20 @@
-﻿@model Projeto.NET_MVC.ViewModels.MovieViewModel
+﻿@model List <Projeto.NET_MVC.Models.Movie>
 @{
     ViewBag.Title = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Movies</h2>
-@if (Model.RandomMovies.Count == 0)
+@if (Model.Count == 0)
 {
     <text>We don't have any movies yet.</text>
 }
 else
 {
     <ul>
-        @foreach (var movie in Model.RandomMovies)
+        @foreach (var movie in Model)
         {
-            <li>@Html.ActionLink(movie.Movie.Name, "Details/" + movie.Movie.Id, "Movies")</li>
+            <li>@Html.ActionLink(movie.Nome, "Details/" + movie.Id, "Movies")</li>
         }
     </ul>
 }

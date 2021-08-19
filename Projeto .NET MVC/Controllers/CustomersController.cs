@@ -1,9 +1,5 @@
 ﻿using Projeto.NET_MVC.Models;
-using Projeto.NET_MVC.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Projeto.NET_MVC.Controllers
@@ -13,19 +9,25 @@ namespace Projeto.NET_MVC.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            var viewModel = new CustomerViewModel();
+            using (var db = new ConexaoDB())
+            {
+                var customers = db.Customers.ToList();
 
-            return View(viewModel);
+                return View(customers);
+            }
         }
 
         public ActionResult Details(int id)
         {
-            var customers = new CustomerViewModel().Customers;
-            var customer = customers.Where(l=>l.Id==id).FirstOrDefault();
+            using (var db = new ConexaoDB())
+            {
+                var customer = db.Customers.Where(cust => cust.Id == id).FirstOrDefault();
 
-            if (customer == null)
-                return HttpNotFound();
-            return View(customer);
+                if (customer == null)
+                    return HttpNotFound();
+
+                return View(customer);
+            }
         }
     }
 }

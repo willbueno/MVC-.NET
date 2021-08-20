@@ -6,7 +6,7 @@ namespace Projeto.NET_MVC.Controllers
 {
     public class MoviesController : Controller
     {
-        // GET: Movies/Random
+        // GET: Movies
         public ActionResult Index()
         {
             using (var db = new ConexaoDB())
@@ -16,7 +16,6 @@ namespace Projeto.NET_MVC.Controllers
                 return View(movies);
             }
         }
-
         public ActionResult Details(int id)
         {
             using (var db = new ConexaoDB())
@@ -27,6 +26,26 @@ namespace Projeto.NET_MVC.Controllers
                     return HttpNotFound();
                 return View(movie);
             }
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Movie movie)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var db = new ConexaoDB())
+                {
+                    db.Movies.Add(movie);
+                    db.SaveChanges();
+                }
+            }
+            return View();
         }
     }
 }

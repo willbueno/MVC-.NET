@@ -12,7 +12,11 @@ namespace Projeto.NET_MVC.Controllers
         {
             using (var db = new ConexaoDB())
             {
-                var rent = db.Aluguels.ToList();
+                //var rent = db.Aluguels.ToList();
+                var rent = db.Aluguels
+                    .Include(alug => alug.Customer)
+                    .Include(mov => mov.Movie)
+                    .ToList();
 
                 return View(rent);
             }

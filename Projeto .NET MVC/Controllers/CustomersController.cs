@@ -29,5 +29,25 @@ namespace Projeto.NET_MVC.Controllers
                 return View(customer);
             }
         }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var db = new ConexaoDB())
+                {
+                    db.Customers.Add(customer);
+                    db.SaveChanges();
+                }
+            }
+            return View();
+        }
     }
 }

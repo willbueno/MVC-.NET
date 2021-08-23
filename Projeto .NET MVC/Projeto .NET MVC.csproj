@@ -135,11 +135,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Aluguel.cs" />
-    <Compile Include="Models\ConexaoDB.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Movie.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +197,15 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RepositoryProjeto\RepositoryProjeto.csproj">
+      <Project>{0a4b4ec3-edf9-471a-96c7-c4f6ac4bb951}</Project>
+      <Name>RepositoryProjeto</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

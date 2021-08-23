@@ -1,14 +1,15 @@
-namespace Projeto.NET_MVC.Models
-{
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("Customer")]
-    public partial class Customer
+namespace RepositoryProjeto.Entities
+{
+
+    [Table("Movie")]
+    public partial class Movie : Entity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
+        public Movie()
         {
             Aluguels = new HashSet<Aluguel>();
         }

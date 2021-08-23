@@ -1,4 +1,5 @@
-﻿using Projeto.NET_MVC.Models;
+﻿using RepositoryProjeto.Entities;
+using RepositoryProjeto.Repositories;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -9,24 +10,23 @@ namespace Projeto.NET_MVC.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            using (var db = new ConexaoDB())
+            using (var reposityWrapper = new RepositoryWrapper())
             {
-                var customers = db.Customers.ToList();
+                var movies = reposityWrapper.CustomerRepository.GetAll();
 
-                return View(customers);
+                return View(movies);
             }
         }
 
         public ActionResult Details(int id)
         {
-            using (var db = new ConexaoDB())
+            using (var reposityWrapper = new RepositoryWrapper())
             {
-                var customer = db.Customers.Where(cust => cust.Id == id).FirstOrDefault();
+                var movie = reposityWrapper.CustomerRepository.FindQuery().Where(cust => cust.Id == id).FirstOrDefault();
 
-                if (customer == null)
+                if (movie == null)
                     return HttpNotFound();
-
-                return View(customer);
+                return View(movie);
             }
         }
 
@@ -41,12 +41,12 @@ namespace Projeto.NET_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var db = new ConexaoDB())
+                using (var reposityWrapper = new RepositoryWrapper())
                 {
-                    db.Customers.Add(customer);
-                    db.SaveChanges();
+                    var _customer = reposityWrapper.CustomerRepository.Add(customer);
                 }
             }
+            // TODO redirect to index view
             return View();
         }
     }

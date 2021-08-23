@@ -1,4 +1,4 @@
-﻿using Projeto.NET_MVC.Models;
+﻿using RepositoryProjeto.Connection;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -10,9 +10,9 @@ namespace Projeto.NET_MVC.Controllers
         // GET: Aluguel
         public ActionResult Index()
         {
+            // TODO adjust to unit of work
             using (var db = new ConexaoDB())
             {
-                //var rent = db.Aluguels.ToList();
                 var rent = db.Aluguels
                     .Include(alug => alug.Customer)
                     .Include(mov => mov.Movie)

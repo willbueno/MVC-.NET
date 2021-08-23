@@ -1,9 +1,7 @@
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
+using RepositoryProjeto.Entities;
 using System.Data.Entity;
-using System.Linq;
 
-namespace Projeto.NET_MVC.Models
+namespace RepositoryProjeto.Connection
 {
     public partial class ConexaoDB : DbContext
     {
@@ -15,7 +13,6 @@ namespace Projeto.NET_MVC.Models
         public virtual DbSet<Aluguel> Aluguels { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Movie> Movies { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

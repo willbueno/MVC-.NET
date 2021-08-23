@@ -1,13 +1,14 @@
-namespace Projeto.NET_MVC.Models
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+
+namespace RepositoryProjeto.Entities
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Aluguel")]
-    public partial class Aluguel
+    public partial class Aluguel : Entity
     {
         public int Id { get; set; }
 

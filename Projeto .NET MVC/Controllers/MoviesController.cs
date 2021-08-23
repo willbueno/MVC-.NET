@@ -1,4 +1,5 @@
-﻿using Projeto.NET_MVC.Models;
+﻿using RepositoryProjeto.Entities;
+using RepositoryProjeto.Repositories;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -9,18 +10,18 @@ namespace Projeto.NET_MVC.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            using (var db = new ConexaoDB())
+            using (var reposityWrapper = new RepositoryWrapper())
             {
-                var movies = db.Movies.ToList();
+                var movies = reposityWrapper.MovieRepository.GetAll();
 
                 return View(movies);
             }
         }
         public ActionResult Details(int id)
         {
-            using (var db = new ConexaoDB())
+            using (var reposityWrapper = new RepositoryWrapper())
             {
-                var movie = db.Movies.Where(mov => mov.Id == id).FirstOrDefault();
+                var movie = reposityWrapper.MovieRepository.FindQuery().Where(mov => mov.Id == id).FirstOrDefault();
 
                 if (movie == null)
                     return HttpNotFound();
@@ -39,12 +40,12 @@ namespace Projeto.NET_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var db = new ConexaoDB())
+                using (var reposityWrapper = new RepositoryWrapper())
                 {
-                    db.Movies.Add(movie);
-                    db.SaveChanges();
+                    var _movie = reposityWrapper.MovieRepository.Add(movie);
                 }
             }
+            // TODO redirect to index view
             return View();
         }
     }

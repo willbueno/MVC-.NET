@@ -45,8 +45,7 @@ namespace Projeto.NET_MVC.Controllers
                     var _movie = reposityWrapper.MovieRepository.Add(movie);
                 }
             }
-            // TODO redirect to index view
-            return View();
+            return Redirect("Index");
         }
     }
 }

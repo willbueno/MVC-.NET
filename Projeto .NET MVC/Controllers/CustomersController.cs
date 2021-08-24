@@ -46,8 +46,7 @@ namespace Projeto.NET_MVC.Controllers
                     var _customer = reposityWrapper.CustomerRepository.Add(customer);
                 }
             }
-            // TODO redirect to index view
-            return View();
+            return Redirect("Index");
         }
     }
 }

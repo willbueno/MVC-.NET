@@ -27,6 +27,7 @@ namespace RepositoryProjeto.Entities
     {
         public string CustomerName { get; set; }
         public string MovieName { get; set; }
+        public int CustomerId { get; set; }
         public int MovieId { get; set; }
     }
 }

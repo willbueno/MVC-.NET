@@ -14,7 +14,7 @@ else
     <ul>
         @foreach (var rent in Model)
         {
-            <li>@rent.CustomerName rented: @Html.ActionLink(rent.MovieName, "Details/" + rent.MovieId, "Movies")</li>
+            <li>@Html.ActionLink(rent.CustomerName, "Details/" + rent.CustomerId, "Customers") rented: @Html.ActionLink(rent.MovieName, "Details/" + rent.MovieId, "Movies")</li>
         }
     </ul>
 }

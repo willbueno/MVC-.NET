@@ -16,7 +16,7 @@ namespace Projeto.NET_MVC.Controllers
                 var rent = db.Aluguels
                     .Include(alug => alug.Customer).AsNoTracking()
                     .Include(mov => mov.Movie).AsNoTracking()
-                    .Select(x => new AluguelView { CustomerName=x.Customer.Nome, MovieName=x.Movie.Nome, MovieId=x.Id_movie })
+                    .Select(x => new AluguelView { CustomerName=x.Customer.Nome, MovieName=x.Movie.Nome, CustomerId = x.Id_customer, MovieId = x.Id_movie })
                     .ToList();
 
                 return View(rent);

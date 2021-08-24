@@ -16,7 +16,7 @@ namespace RepositoryProjeto.Entities
 
         public int Id_movie { get; set; }
 
-        public DateTime date { get; set; }
+        public DateTime Date { get; set; }
 
         public virtual Customer Customer { get; set; }
 

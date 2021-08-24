@@ -22,4 +22,11 @@ namespace RepositoryProjeto.Entities
 
         public virtual Movie Movie { get; set; }
     }
+
+    public class AluguelView
+    {
+        public string CustomerName { get; set; }
+        public string MovieName { get; set; }
+        public int MovieId { get; set; }
+    }
 }

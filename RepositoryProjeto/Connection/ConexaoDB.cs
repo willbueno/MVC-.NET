@@ -1,4 +1,5 @@
 using RepositoryProjeto.Entities;
+using System.Data.Common;
 using System.Data.Entity;
 
 namespace RepositoryProjeto.Connection
@@ -7,6 +8,16 @@ namespace RepositoryProjeto.Connection
     {
         public ConexaoDB()
             : base("name=ConexaoDB")
+        {
+        }
+
+        public ConexaoDB(DbConnection existingConnection, bool contextOwnsConnection = true)
+            : base(existingConnection, contextOwnsConnection)
+        {
+        }
+
+        public ConexaoDB(string connectionString)
+            : base(connectionString)
         {
         }
 
